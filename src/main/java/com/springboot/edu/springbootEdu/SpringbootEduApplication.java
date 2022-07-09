@@ -11,7 +11,6 @@ public class SpringbootEduApplication {
 	private static Logger logger = LoggerFactory.getLogger(SpringbootEduApplication.class);
 
 	public static void main(String[] args) {
-		logger.debug("Hello World !");
 		SpringApplication.run(SpringbootEduApplication.class, args);
 	}
 

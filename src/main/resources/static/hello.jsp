@@ -1,4 +1,0 @@
-
-
-
-Hello JSP page
