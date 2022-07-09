@@ -158,3 +158,40 @@ dependencies : 라이브러리 사용을 위한 의존성 설정
                     value : URL 설정 , method : GET / POST / PUT / PATCH 등 지정
                     스프링 4.3 버전 이상 부터는 메서드를 지정하는 방식 보다는 해당 어노테이션을 사용 (@GetMapping / @PostMapping / @DeleteMapping / @PutMapping / @PatchMapping) 을 사용
 
+-- PathVariable : GET 형식의 요청에서 파라미터를 전달하기 위해 URL 에 값을 담아 요청하는 방법
+                  아래 방식은 @GetMapping 에서 사용 된 (변수) 의 이름과 메서드의 매개변수와 일치시켜야 함
+                  ex ) @GetMapping(value = "/variable1/{variable}")
+                       @Pathvariable 어노테이션을 사용하여 Mapping 주소에 있는 variable 값을 가져 옴
+                       public String getVaraible1(@PathVariable String variable) {
+                        return variable;
+                       }
+
+-- RequestParam : GET 형식의 요청에서 쿼리 문자열을 전달하기 위해 사용되는 방법
+                  ? 를 기준으로 우측에 {키}={값} 의 형태로 전달되며, 복수 형태로 전달 할 경우 & 를 사용함
+
+@GetMapping(value = "/request1" )
+public String getRequestParam1(@RequestParam name, @RequestParam email, @Request organization) {
+    return name + "" + email + "" + organization;
+}
+
+-- RequestParam 에서 어떤 쿼리 문자열을 가져올지 모를 시 Map 을 사용
+@GetMapping(value ="/request1")
+public String getRequestParam1(@RequestParam Map<String, Object> param) {
+     StringBuilder sb = new StringBuilder();
+     param.entrySet().forEach(map -> {
+        sb.append(map.getKey() + " : " + map.getValue() + "\n");
+     });
+        return sb.toString();
+}
+
+-- DTO 사용 (별도의 Data 클래스를 만들어서 사용, key 와 value 가 어느정도 정해져 있음, Request 에서 많이 사용)
+public class memberDTO {
+    private String name;
+    private String email;
+    private String organization;
+}
+
+@GetMapping(value="request3")
+public String getRequestParam3(MemberDTO memberDTO) {
+    return memberDTO.toString();
+}
