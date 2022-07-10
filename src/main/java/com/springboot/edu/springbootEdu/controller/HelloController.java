@@ -49,7 +49,7 @@ public class HelloController {
         return sb.toString();
     }
     
-    // classDTO 를 사용하여 param 을 받아오는 방법
+    // classDTO 를 사용하여 param 을 받아오는 방법 DTO 에 선언된 fields 들 을 RequestParam 속성으로 값을 가져옴
     @GetMapping("/request3")
     public String request3(MemberDTO memberDTO) {
         return memberDTO.toString();

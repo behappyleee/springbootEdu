@@ -35,7 +35,8 @@ public class MemberDTO {
         return "Member DTO ("
                 + "name = " + name + ""
                 + "email = " + email + ""
-                + "organization = " + organization + "";
+                + "organization = " + organization + ""
+                + ")";
     }
 
 }
