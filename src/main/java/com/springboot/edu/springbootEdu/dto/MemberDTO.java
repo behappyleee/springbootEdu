@@ -33,9 +33,9 @@ public class MemberDTO {
     @Override
     public String toString() {
         return "Member DTO ("
-                + "name = " + name + ""
-                + "email = " + email + ""
-                + "organization = " + organization + ""
+                + "name = " + name + " "
+                + "email = " + email + " "
+                + "organization = " + organization + " "
                 + ")";
     }
 
