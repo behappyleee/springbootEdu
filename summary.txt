@@ -213,4 +213,16 @@ public String getRequestParam3(MemberDTO memberDTO) {
                     IoC Container 에게 해당 클래스를 Bean 구성 Class 임을 알려줌
 -- @Bean : 개발자가 직접 제어가 불가능한 외부 라이브러리 등을 Bean 으로 만들 경우에 사용
 
+-- Put API : 해당 리소스가 존재하면 갱신하고, 리소스가 없을 경우에는 새로 생성 해 주는 api
+-- Delete API : 서버를 통해 리소스를 삭제 하기 위해 사용되는 API
+                (일반적으로 @PathVariable 을 통해 리소스 ID 등을 받아 처리)
+
+-- Response Entity : Spring Framework 에서 제공하는 클래스 중 HttpEntity 라는 클래스를 상속받아 사용 하는 클래스
+                     사용자의 HttpRequest 에 대한 응답 데이터를 포함
+(포함하는 클래스 : HttpStatus / HttpHeaders / HttpBody)
+
+
+
+
+
 
