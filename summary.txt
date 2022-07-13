@@ -221,6 +221,27 @@ public String getRequestParam3(MemberDTO memberDTO) {
                      사용자의 HttpRequest 에 대한 응답 데이터를 포함
 (포함하는 클래스 : HttpStatus / HttpHeaders / HttpBody)
 
+-- Lombok : 롬복은 반복되는 메서드를 Annotation 을 사용하여 자동으로 작성해 주는 라이브러리, 일반적으로 VO, DTO, Model, Entity 등의 데이터 클래스에서 주로 사용됨
+-- Lombok 대표적인 어노테이션
+@NoArgsContructor : 파라미터가 없는 생성자를 생성,
+@AllArgsContructor : 모든 필드 값을 파라미터로 갖는 생성자를 생성,
+@RequiredArgsConstructor : 필드 값 중 final 이나 @NotNull 인 값을 갖는 생성자를 생성
+@ToString : toString 메서더를 자동으로 생성해주는 기능
+@ToString(exclude="") exclude 속성을 사용하여 특정 필드를 toString 필드에 나오지 않도록 설정
+@EqualsAndHashCode : equals, hashCode 메서드를 자동으로 생성 equals : 두 객체의 내용이 같은지 동등성 (equality) 를 비교하는 연산자
+hashCode : 두 객체가 같은 객체인지 동일성(identity) 를 비교하는 연산자
+callSuper 속성을 통해 메서드 생성시 부모 클래스의 필드까지 고려할지 여부 설정 가능
+- callSuper = ture -> 부모 클래스 필드 값들도 동일한지 체크
+
+-- Entity : 데이터 베이스에 쓰을 컬럼과 여러 엔티티 간의 연관 관계를 정의, 데이터 베이스의 테으블을 하나의 엔티티로 생각해도 무방
+            실제 데이터 베이스의 테이블과 1:1 로 맵핑이 됨, 이 클래스의 필드는 각 테이블 내부의 컬럼(column) 을 의미
+
+-- Repository : Entity 에 의해 생성된 데이터베이스 접근하는 메서드를 사용하기 위한 인터페이스, Service 와 DB 를 연결 하는 고리의 역할을 수행
+                데이터베이스에 적용하고자 하는 CRUD 를 정의하는 영역
+
+-- DAO (Data Access Object) : 데이터베이스 접근하는 객체를 의미 (Persistence Layer) Service 가 DB 에 연결할 수 있게 해주는 역할, DB 를 사용하여 데이터를 조회 하거나 조작하는 기능을 전담
+
+-- DTO (Data Transfer Object) : DTO 는 VO(Value Object) 라고 불리기도 하며, 계층간 데이터 교환을 위한 객체를 의미 VO 의 경우 Read Only 의 개념을 가지고 있음
 
 
 
