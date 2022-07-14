@@ -1,6 +1,6 @@
 package com.springboot.edu.springbootEdu.data.Entity;
 
-import com.springboot.edu.springbootEdu.data.DTO.ProductDTO;
+import com.springboot.edu.springbootEdu.data.dto.ProductDTO;
 import lombok.*;
 
 import javax.persistence.Entity;
