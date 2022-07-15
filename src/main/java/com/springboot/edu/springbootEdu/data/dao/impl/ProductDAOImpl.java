@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class ProductDAOImpl implements ProductDAO {
 
     ProductRepository productRepository;
-
+    // 스프링부트는 기본 적으로 싱글톤을 사용 객체를 Bean 으로 띄워 놓은 다음 가져다 사용하는 개념
     @Autowired
     public ProductDAOImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
