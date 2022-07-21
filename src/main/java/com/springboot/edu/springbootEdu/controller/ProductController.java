@@ -1,6 +1,7 @@
 package com.springboot.edu.springbootEdu.controller;
 
 import com.springboot.edu.springbootEdu.data.dto.ProductDTO;
+import com.springboot.edu.springbootEdu.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +39,11 @@ public class ProductController {
     }
 
     @PostMapping(value ="/product")
-    public ProductDTO createProduct(@RequestBody ProductDTO productDTo) {
+    public ProductDTO createProduct(@RequestBody ProductDTO productDTO) {
         String productId = productDTO.getProductId();
-        String productName = productDTo.getProductName();
-        int productPrice = productDTo.getProductPrice();
-        int productStock = productDTo.getProductStock();
+        String productName = productDTO.getProductName();
+        int productPrice = productDTO.getProductPrice();
+        int productStock = productDTO.getProductStock();
 
         return productService.saveProduct(productId, productName, productPrice, productStock);
     }
