@@ -1,6 +1,8 @@
 package com.springboot.edu.springbootEdu.controller;
 
 import com.springboot.edu.springbootEdu.dto.MemberDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -9,6 +11,20 @@ import java.util.Map;
 @RequestMapping(value = "/api/v1/get-api")  // 해당 클래 스 공통 URL
 public class HelloController {
 
+    // Logger 사용을 위하여서는 Logger 와 Logger 팩토리 클래스를 import 하여야 함 (org.slf4j 해당을 import 하여야 함)
+    private final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
+    
+    // Logger 사용법
+    @PostMapping("/log-test")
+    public void logTest() {
+        LOGGER.trace("LOGGER TRACE MSG");
+        LOGGER.debug("LOGGER DEBUG MSG");
+        LOGGER.info("LOGGER INFO MSG");
+        LOGGER.warn("LOGGER WARN MSG");
+        LOGGER.error("LOGGER ERR MSG");
+    }
+    
+    
     // 만약 ReuqestMapping 에 URL 만 기입 시 POST / GET / DELETE / PATCH 아무 Method 를 사용하여도 응답을 함
     // @RequestMapping("/hello")
     @GetMapping("/hello")   // GetMapping 이 더 최신 어노테이션 ReuqestMapping 이 조금 더 올드 함

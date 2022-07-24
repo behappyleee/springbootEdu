@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- springboot 에서는 자동으로 log가 starter-web 에서 의존성이 주입되어 있음 (별도의 라이브러리 필요 없음) -->
+<configuration scan="true" scanPeriod="30 seconds"> <!-- logback 구현체가 설정을 확인하는 주기 -->
+    <property name="moduleId" value="springbootEdu"/> <!-- moduleId 는 프로젝트가 설치된 폴더명 또는 구별할 수 있는 식별자 이면 됨 -->
+    <property name="type" value="springbootEdu"/>   <!-- 로그파일을 구성하는 인자 -->
+    <property name="logback" value="logback"/>  <!-- log를 저장할 최종 디렉토리 명 -->
+    <property name="logdir" value="C:\Users\dhfhf\Desktop\myfolder\workspace\springbootEdu\logSave"/>
+
+    <!-- Appenders -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:SSS}] [%-5level] [%thread] %logger %msg\n</pattern>
+        </encoder>
+    </appender>
+
+    <root>
+        <appender-ref ref="console" />  <!-- ref 는 Appender 에 이름과 매치가 되어야 함 -->
+    </root>
+
+
+</configuration>
+
