@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/product-api")
 public class ProductController {
 
-    private Logger logger = LoggerFactory.getLogger(ProductController.class);
+    private Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
     private ProductService productService;
 
     @Autowired
@@ -23,19 +23,19 @@ public class ProductController {
     @GetMapping(value = "/product/{productId}")
     public ProductDTO getProduct(@PathVariable String productId) {
         long startTime = System.currentTimeMillis();
-//
-//        ProductDTO productDTO = productService.getProduct(productId);
-//
-//        logger.info("[getProduct] perform {} of Around Hub API", "getProduct");
-//        logger.info("[getProduct] Response :: productId = {}, productName = {}, productPrice = {}, productStock = {}, ResponseTime = {} ms",
-//                productDTO.getProductId(),
-//                productDTO.getProductName(),
-//                productDTO.getProductPrice(),
-//                productDTO.getProductStock(),
-//                System.currentTimeMillis() - startTime
-//            );
-//        return productDTO;
-          return productService.getProduct(productId);
+        // 쉼표 하나 넣을 시
+        LOGGER.info("[PRODUCT CONTROLLER] perform {} of springbootEdu ", "getProduct");
+        ProductDTO productDTO = productService.getProduct(productId);
+
+        // 중괄호를 사용하여 원하는 값을 다 넣을 수 있음
+        LOGGER.info("[getProduct] Response :: productId = {}, productName = {}, productPrice = {}, productStock = {}, ResponseTime = {} ms",
+                productDTO.getProductId(),
+                productDTO.getProductName(),
+                productDTO.getProductPrice(),
+               productDTO.getProductStock(),
+                System.currentTimeMillis() - startTime
+           );
+       return productDTO;
     }
 
     @PostMapping(value ="/product")
