@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/api/v1/product-api")
 public class ProductController {
@@ -38,12 +40,15 @@ public class ProductController {
        return productDTO;
     }
 
+    // ProductDTO 의 Validation 어노테이션을 사용하기 위하여서는 @Valid 어노테이션을 붙여준다.
     @PostMapping(value ="/product")
-    public ProductDTO createProduct(@RequestBody ProductDTO productDTO) {
+    public ProductDTO createProduct(@Valid @RequestBody ProductDTO productDTO) {
         String productId = productDTO.getProductId();
         String productName = productDTO.getProductName();
         int productPrice = productDTO.getProductPrice();
         int productStock = productDTO.getProductStock();
+
+        LOGGER.info("postProduct API : {} " , productId);
 
         return productService.saveProduct(productId, productName, productPrice, productStock);
     }
