@@ -290,8 +290,11 @@ log4j에 비해 약 10배 정도 빠른 퍼포먼스, 메모리 효율성 증대
 -- Java 에서는 Bean Validation / Hibernation Validator 를 제공
 -- Validation 관련 어노테이션 (@Size, @NotNull, @NotEmpty, @NotBlank, @Pastm @PastorPresent ... @Max, @Min ...)
 
-
-
+-- SpringBoot 예외 처리 (Java Exception / Custom Exception)
+-- 스프링 부트의 예외 처리 방식은 크게 2가지가 존재 - @ControllerAdvice 를 통한 모든 Controller 에서 발생할 수 있는 예외 처리
+-- @ExceptionHandler 를 통한 특정 Controller 의 예외 처리
+-- 예외 클래스 : 모든 예외 클래스는 Throwable 클래스를 상속 받고 있음 (Exception 은 수 많은 자식 클래스가 있음)
+-- RuntimeException 은 UncheckedException (실행 중 단계) 이며 그 외 는 모두 Checked Exception (컴파일 단계) 임
 
 
 
