@@ -296,5 +296,13 @@ log4j에 비해 약 10배 정도 빠른 퍼포먼스, 메모리 효율성 증대
 -- 예외 클래스 : 모든 예외 클래스는 Throwable 클래스를 상속 받고 있음 (Exception 은 수 많은 자식 클래스가 있음)
 -- RuntimeException 은 UncheckedException (실행 중 단계) 이며 그 외 는 모두 Checked Exception (컴파일 단계) 임
 
+-- Custom Exception
+-- HttpStatus 를 이용하여 표현 HttpStatus 는 Enum 임 (Enum 은 상수들을 모아서 Symbolic 하게 표현)
+
+-- RestTemplate : 스프링에서 제공하는 http 통신 기능을 쉽게 사용할 수 있게 설계되어있는 템플릿
+-- HTTP 서버와의 통신을 단순화하고 RESTful 원칙을 지킴, 동기 방식으로 처리되며 비동기 방식으로는 asyncRestTempalte 이 있음
+
+
+
 
 

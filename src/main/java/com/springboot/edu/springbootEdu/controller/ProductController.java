@@ -1,16 +1,19 @@
 package com.springboot.edu.springbootEdu.controller;
 
+import com.springboot.edu.springbootEdu.common.Constants;
+import com.springboot.edu.springbootEdu.common.exception.AroundHubException;
 import com.springboot.edu.springbootEdu.data.dto.ProductDTO;
 import com.springboot.edu.springbootEdu.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Controller
+@RestController
 @RequestMapping("/api/v1/product-api")
 public class ProductController {
 
@@ -48,14 +51,18 @@ public class ProductController {
         int productPrice = productDTO.getProductPrice();
         int productStock = productDTO.getProductStock();
 
-        LOGGER.info("postProduct API : {} " , productId);
-
         return productService.saveProduct(productId, productName, productPrice, productStock);
     }
 
     @DeleteMapping(value = "/product/{productId}")
     public ProductDTO deleteProduct() {
         return null;
+    }
+
+    // ExceptionTest 위한 메서드 (Custom Exception 을 던 짐 )
+    @PostMapping(value = "/product/exception")
+    public void exceptionTest () throws AroundHubException {
+        throw new AroundHubException(Constants.ExceptionClass.PRODUCT, HttpStatus.BAD_REQUEST, "의도한 에러가 발생하였습니다.");
     }
 
 }

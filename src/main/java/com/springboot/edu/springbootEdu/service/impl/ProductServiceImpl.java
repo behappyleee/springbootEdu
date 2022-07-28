@@ -40,6 +40,7 @@ public class ProductServiceImpl implements ProductService {
         ProductEntity productEntity = productDataHandler.getProductEntity(productId);
         ProductDTO productDTO = new ProductDTO(productEntity.getProductId(),
                 productEntity.getProductName(), productEntity.getProductPrice(), productEntity.getProductStock());
+
         return productDTO;
     }
 

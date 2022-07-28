@@ -17,7 +17,7 @@
         </encoder>
     </appender>
 
-    <root>
+    <root level="debug">
         <appender-ref ref="console" />  <!-- ref 는 Appender 에 이름과 매치가 되어야 함 -->
     </root>
 
