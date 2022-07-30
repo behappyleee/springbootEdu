@@ -1,4 +1,4 @@
-package com.springboot.edu.springbootEdu.service;
+package com.springboot.edu.springbootEdu.serviceImpl;
 
 import com.springboot.edu.springbootEdu.data.dto.ProductDTO;
 

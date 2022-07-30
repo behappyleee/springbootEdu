@@ -302,6 +302,26 @@ log4j에 비해 약 10배 정도 빠른 퍼포먼스, 메모리 효율성 증대
 -- RestTemplate : 스프링에서 제공하는 http 통신 기능을 쉽게 사용할 수 있게 설계되어있는 템플릿
 -- HTTP 서버와의 통신을 단순화하고 RESTful 원칙을 지킴, 동기 방식으로 처리되며 비동기 방식으로는 asyncRestTempalte 이 있음
 
+-- TDD (애자일 개발 방식 중 하나 - 코드 설계 시 원하는 단계적 목표에 대하여 대해 설정하여 진행하고자 하는 것에 대한 결정 방향의 갭을 줄이고자 함)
+-- JUnit : 테스트 주도 개발이라는 의미를 가짐, 테스트를 먼저 설계 및 구축 후 테스트를 통과할 수 있는 코드를 짜는 것
+-- 테스트 코드 작성 목적 : 코드의 안정성 높일 수 있음, 기능을 추가 하거나 변경하는 과정에서 발생할 수 있는 Side-Effect 를 줄일 수 있음, 해당 코드가 작성된 목적을 명확하게 표현이 가능
+-- 코드에 불필요한 내용이 들어가는 것을 비교적 줄일 수 있음
+-- JUnit : Java 진영의 대표적인 Test Framework, 단위 테스트(Unit Test) : 코드의 특정 모듈이 의도댄 대로 동작하는지 테스트 하는 절차, 모든 함수와 메서드에 대한 각각의 테스트 케이스를 작성하는 것
+-- Annotation 을 기반으로 테스트를 지원, Assert(단정문) 으로 테스트 케이스의 기대값에 대해 수행 결과를 확인이 가능JUni5 는 크게 Jupiter, Platform, Vintage 모듈로 구성이 됨
+
+Jupiter - TestEngine API 구현체로 Junit5 를 구현하고 있음,
+JUnut Platform - Test 를 실행하기 위한 뼈대, Test 를 발견하고 테스트 계획을 생성하는 TestEngine 인터페이스를 가지고 있음, TestEngin 을 통해 Test 를 발견하고 수행 및 결과를 보고함
+JUnit Vintage - TestEngine API 구현체로 Junit3, 4 를 구현하고 있음
+JUNit 은 Lify Cycle 이 있음, @Test : 테스트용 메서드를 표한하는 어노테이션, @BeforEach - 각 테스트 메서드가 시작되기 전 실행 되어야 하는 메서드
+@AfterEach : 각 테스트 메서드가 시작된 후 실행되어야 하는 메서드, @BeforeAll : 테스트 시작 전에 실행되어야 하는 메서드 (static 처리 필요), @AfterAll : 테스트 후 전 실행되어야 하는 메서드 (static 처리 필요)
+-- 통합 테스트 : 통합 테스트는 여러 기능을 조합하여 전체 비즈니스 로직이 제대로 동작하는지 확인 하는 것을 의미, @SpringBootTest 어노테이션을 사용하여 진행
+-- 단위 테스트 FIRST 원칙이 중요 (Fast, Independant, Repeatable, Self-Validating, Timely)
+
+
+
+
+
+
 
 
 

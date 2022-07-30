@@ -1,4 +1,4 @@
-package com.springboot.edu.springbootEdu.service;
+package com.springboot.edu.springbootEdu.serviceImpl;
 
 import com.springboot.edu.springbootEdu.dto.MemberDTO;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,7 @@ public interface RestTemplateService {
 
     public String getName2();
 
-    public ResponseEntity<MemberDTO> pstDto();
+    public ResponseEntity<MemberDTO> postDto();
 
     public ResponseEntity<MemberDTO> addHeader();
 

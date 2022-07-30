@@ -3,12 +3,11 @@ package com.springboot.edu.springbootEdu.controller;
 import com.springboot.edu.springbootEdu.common.Constants;
 import com.springboot.edu.springbootEdu.common.exception.AroundHubException;
 import com.springboot.edu.springbootEdu.data.dto.ProductDTO;
-import com.springboot.edu.springbootEdu.service.ProductService;
+import com.springboot.edu.springbootEdu.serviceImpl.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

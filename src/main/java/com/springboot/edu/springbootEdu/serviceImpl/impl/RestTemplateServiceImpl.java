@@ -1,7 +1,7 @@
-package com.springboot.edu.springbootEdu.service.impl;
+package com.springboot.edu.springbootEdu.serviceImpl.impl;
 
 import com.springboot.edu.springbootEdu.dto.MemberDTO;
-import com.springboot.edu.springbootEdu.service.RestTemplateService;
+import com.springboot.edu.springbootEdu.serviceImpl.RestTemplateService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.RequestEntity;
@@ -75,7 +75,7 @@ public class RestTemplateServiceImpl implements RestTemplateService {
     }
 
     @Override
-    public ResponseEntity<MemberDTO> pstDto() {
+    public ResponseEntity<MemberDTO> postDto() {
         URI uri = UriComponentsBuilder
                 .fromUriString("http://localhost:9090")
                 .path("/api/server/member")   // controller url

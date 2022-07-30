@@ -1,7 +1,7 @@
 package com.springboot.edu.springbootEdu.controller;
 
 import com.springboot.edu.springbootEdu.dto.MemberDTO;
-import com.springboot.edu.springbootEdu.service.RestTemplateService;
+import com.springboot.edu.springbootEdu.serviceImpl.RestTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +37,7 @@ public class RestTemplateController {
 
     @PostMapping("/dto")
     public ResponseEntity<MemberDTO> postDto() {
-        return restTemplateService.pstDto();
+        return restTemplateService.postDto();
     }
 
     @PostMapping("/add-header")
