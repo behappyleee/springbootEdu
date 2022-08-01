@@ -29,7 +29,7 @@ public class ProductControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-    
+
     // ProductController 에서 잡고 있는 Bean 객체에 대해 Mock 형태의 객체를 생성 해 줌
     // ProductController 클래스를 보면 기본 생성자로 ProductServiceImpl 을 주입을 받고 있음
     @MockBean
