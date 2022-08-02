@@ -328,8 +328,22 @@ check : Code Coverage Metric 이 충돌하는 지 확인하는 명령어,
 -- Jacoco 와 Maven Life Cycle - Maven LifeCylce (compilte -> test -> package -> install -> deploy)
 Jacoco 플러그인은 Maven 라이프 사이클에 의해 동작 하며, test phase 이후에 측정이 가능함
 
+-- Spring 과 SpringBoot 차이 (Spring - 정확한 표현은 Spring Framework)
+-- DI / IoC / AOP 가 가장 중요한 요소 --> 위 요소들을 통하여 Loose Coupling (느슨한 결합) 달성이 가능
+-- 의존성 주입 (DI - Dependency Injection)
+ex) Test a = new Test(); 라는 new 키워드를 사용하지 않고 (DI 를 사용하지 않은 코드 - Reference 를 사용하는 방법)
+의존성 주입을 사용하지 않은 코드는 new 라는 키워드를 사용 시 결합도가 올라가게 됨, 단위 테스트 사용 시 Mock 객체를 사용하지 못하게 됨
+@Autowired 를 사용 시 DI 를 주입 하여 사용을 함, 위와 같이 작성시 Mock 객체로 대체하여 쉽게 테스트가 가능
 
+-- AOP : Spring Framework 에서 제공하는 기능 중 하나
+OOP 를 보완하는 수단, 여러 곳에 쓰이는 공통 기능을 모듈화하여 필요한 곳에 연결함으로써 유지보수 또는 재사용에 용이하도록 함
+AOP 를 통해 기존 프로젝트에 다양한 기능을 로직 수정 없이 추가할 수 있음, 이런 개발 방식을 통해 결합도를 낮춘 개발이 가능
 
+-- Spring 에 많이 사용되는 대표적인 모듈 (Spring JDBC / Spring MVC / Spring AOP / Spring ORM / Spring Test / Spring Expression Language (SPEL))
+-- 스프링은 다양한 기능을 제공하지만, 그 기능을 사용하기 위한 설정에 많은 시간이 걸림
+-- 스프링 부트는 (Auto Configuration) 을 이용 , 어플리케이션 개발에 필요한 모든 디펜던시를 프레임 워크에서 관리, jar 파일이 클래스 패스에 있는 경우 SpringBoot 는 Dispatcher Servlet 으로 구성이 됨
+
+-- 단축 URL :
 
 
 
