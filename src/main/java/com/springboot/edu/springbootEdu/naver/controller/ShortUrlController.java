@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.HttpURLConnection;
+
 @RestController
 @RequestMapping("/short-url")
 public class ShortUrlController {
@@ -19,7 +21,7 @@ public class ShortUrlController {
     @Value("${around.hub.short.url.id}")
     private String CLIEND_ID;
 
-    @Value("${}")
+    @Value("${around.hub.short.url.secret}")
     private String CLIENT_SECRET;
 
     ShortUrlService shortUrlService;
@@ -35,7 +37,6 @@ public class ShortUrlController {
     @PostMapping()
     public ShortUrlResponseDTO generateShortUrl(String originalUrl) {
         LOGGER.info("[generateShortUrl] perform API, CLIENT_ID: {}, CLIENT_SECRET: {} " , CLIEND_ID, CLIENT_SECRET);
-
         return shortUrlService.generateShortUrl(CLIEND_ID, CLIENT_SECRET, originalUrl);
     }
 
