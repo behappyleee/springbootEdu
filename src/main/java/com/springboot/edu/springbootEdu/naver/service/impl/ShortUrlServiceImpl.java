@@ -92,11 +92,11 @@ public class ShortUrlServiceImpl implements ShortUrlService {
     }
 
     private ResponseEntity<NaverUriDTO> requestShortUrl(String clientId, String clientSecret, String originalUrl) {
-        LOGGER.info("[requestShortUrl] clientId, clientSecret, original URL : {} " , originalUrl);
+        LOGGER.info("[requestShortUrl] clientId : {} , clientSecret :  {} , original URL : {} " , clientId, clientSecret, originalUrl);
         // URI 를 통하여 외부 uri 와 통신함
         URI uri = UriComponentsBuilder
                 .fromUriString("https://openapi.naver.com")
-                .path("/v1/util/shortUrl")
+                .path("/v1/util/shorturl")
                 .queryParam("url", originalUrl)
                 .encode()
                 .build()

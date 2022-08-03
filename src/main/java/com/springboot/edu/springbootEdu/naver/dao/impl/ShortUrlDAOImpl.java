@@ -3,12 +3,12 @@ package com.springboot.edu.springbootEdu.naver.dao.impl;
 
 import com.springboot.edu.springbootEdu.naver.dao.ShortUrlDAO;
 import com.springboot.edu.springbootEdu.naver.entity.ShortUrlEntity;
+import com.springboot.edu.springbootEdu.naver.repository.ShortUrlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ShortUrlDAOImpl implements ShortUrlDAO {
-
 
     private final ShortUrlRepository shortUrlRepository;
 

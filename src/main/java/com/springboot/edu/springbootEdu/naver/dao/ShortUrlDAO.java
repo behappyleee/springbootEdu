@@ -6,6 +6,6 @@ public interface ShortUrlDAO {
 
     ShortUrlEntity saveShortUrl(ShortUrlEntity shortUrl);
 
-    ShortUrlEntity getShourtUrl(String originalUrl);
+    ShortUrlEntity getShortUrl(String originalUrl);
 
 }
