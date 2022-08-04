@@ -46,7 +46,6 @@ public class ShortUrlController {
         return shortUrlService.getShortUrl(CLIEND_ID, CLIENT_SECRET, originalUrl);
     }
 
-
     @PutMapping()
     public ShortUrlResponseDTO updateShortUrl(String originalUrl) {
         return null;

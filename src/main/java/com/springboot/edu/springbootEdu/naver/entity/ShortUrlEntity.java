@@ -13,8 +13,8 @@ import javax.persistence.*;
 @Builder
 @Table(name = "short_url")
 public class ShortUrlEntity extends BaseEntity{
-
-    // 상속 받은 BaseEntity 에서
+    
+    // 상속 받은 BaseEntity 에서 createdAt / updatedAt 두 컬럼을 추가하여 준다
 
 
     // Table 을 읽어서 Index 번호를 가져옴

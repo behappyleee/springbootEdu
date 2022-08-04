@@ -28,4 +28,24 @@ public class ShortUrlDAOImpl implements ShortUrlDAO {
         ShortUrlEntity foundShortUrl = shortUrlRepository.findByOrgUrl(originalUrl);
         return foundShortUrl;
     }
+
+    @Override
+    public ShortUrlEntity getOriginalUrl(String shortUrl) {
+        return null;
+    }
+
+    @Override
+    public ShortUrlEntity updateShortUrl(ShortUrlEntity newShortUrlEntity) {
+        return null;
+    }
+
+    @Overridecd 
+    public void deleteByShortUrl(String shortUrl) {
+
+    }
+
+    @Override
+    public void deleteByOriginalUrl(String originalUrl) {
+
+    }
 }

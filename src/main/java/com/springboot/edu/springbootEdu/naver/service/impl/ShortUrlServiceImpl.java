@@ -70,10 +70,7 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         shortUrlEntity.setOrgUrl(orgUrl);
         shortUrlEntity.setUrl(shortUrl);
         shortUrlEntity.setHash(hash);
-
         shortUrlDAO.saveShortUrl(shortUrlEntity);
-
-
         ShortUrlResponseDTO shortUrlResponseDTO = new ShortUrlResponseDTO(orgUrl, shortUrl);
 
         LOGGER.info("[generateShourtUrl] Response DTO : {} " , shortUrlResponseDTO.toString());
@@ -104,9 +101,7 @@ public class ShortUrlServiceImpl implements ShortUrlService {
 
         LOGGER.info("[requestShortUrl] set HTTP Header");
         HttpHeaders headers = new HttpHeaders();
-
         headers.setAccept(Arrays.asList(new MediaType[]{MediaType.APPLICATION_JSON}));
-
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("X-Naver-Client-Id" , clientId);
         headers.set("X-Naver-Client-Secret", clientSecret);
