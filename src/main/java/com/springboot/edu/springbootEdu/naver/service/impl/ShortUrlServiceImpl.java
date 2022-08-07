@@ -83,11 +83,6 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         return null;
     }
 
-    @Override
-    public ShortUrlResponseDTO deleteByOriginalUrl(String originalUrl) {
-        return null;
-    }
-
     private ResponseEntity<NaverUriDTO> requestShortUrl(String clientId, String clientSecret, String originalUrl) {
         LOGGER.info("[requestShortUrl] clientId : {} , clientSecret :  {} , original URL : {} " , clientId, clientSecret, originalUrl);
         // URI 를 통하여 외부 uri 와 통신함
@@ -118,5 +113,24 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         return responseEntity;
     }
 
+    @Override
+    public void deleteShortUrl(String url) {
+        LOGGER.info("[deleteShortUrl] Request Url : {} " , url );
+        if(url.contains("me2.do")) {
+            deleteByShortUrl(url);
+        } else {
+            deleteByOriginalUrl(url);
+        }
+    }
+
+    public void deleteByShortUrl(String url) {
+        LOGGER.info("[deleteByShortUrl] Url :  {} " , url);
+        shortUrlDAO.deleteByShortUrl(url);
+    }
+
+    public void deleteByOriginalUrl(String url) {
+        LOGGER.info("[deleteByOriginalUrl] Url :  {} " , url);
+        shortUrlDAO.deleteByOriginalUrl(url);
+    }
 
 }

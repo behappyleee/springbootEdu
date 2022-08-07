@@ -8,7 +8,6 @@ public interface ShortUrlRepository extends JpaRepository<ShortUrlEntity, Long> 
     // Jpa 는 Naming 을 통하여 쿼리 작성이 가능
     // 구현체를 만들지 않아도 Jpa가 알아서 메서드를 생성을 해 줌
     ShortUrlEntity findByUrl(String url);
-
     ShortUrlEntity findByOrgUrl(String originalUrl);
 
 }
