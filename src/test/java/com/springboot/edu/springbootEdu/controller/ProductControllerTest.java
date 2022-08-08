@@ -1,9 +1,8 @@
 package com.springboot.edu.springbootEdu.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.springboot.edu.springbootEdu.data.dto.ProductDTO;
-import com.springboot.edu.springbootEdu.serviceImpl.impl.ProductServiceImpl;
+import com.springboot.edu.springbootEdu.service.impl.ProductServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +41,8 @@ public class ProductControllerTest {
     void getProductTest() throws Exception {
         // given : Mock 객체가 특정 상황에서 해야하는 행위를 정의하는 메서드
         // Mockito 라이브러리는 목 객체를 생성하는데 도움을 주는 라이브러리임
-        given(productService.getProduct("12315")).willReturn(
-                new ProductDTO("15871", "pen", 5000, 2000));
+        given(productService.getProduct(12315L)).willReturn(
+                new ProductDTO(15871L, "pen", 5000, 2000));
 
         String productId = "12315";
     
@@ -59,7 +58,7 @@ public class ProductControllerTest {
                 .andDo(print());
 
         // verify : 해당 객체의 메서드가 실행되었는지 체크해 줌
-        verify(productService).getProduct("12315");
+        verify(productService).getProduct(12315L);
     }
 
     // http://localhost:8080/api/v1/product-api/product
@@ -67,12 +66,12 @@ public class ProductControllerTest {
     @DisplayName("Product 데이터 생성 테스트")
     void createProductTest() throws Exception{
         // Mock 객체의 특정 메서드가 실행이 되는 경우 실제 Return 을 올 수 없기 떄문에 아래와 같이 사항을 만들어 줌
-        given(productService.saveProduct("15871", "pen", 5000, 2000)).willReturn(
-                new ProductDTO("15871", "pen", 5000, 2000));
+        given(productService.saveProduct(15871L, "pen", 5000, 2000)).willReturn(
+                new ProductDTO(15871L, "pen", 5000, 2000));
 
 
         // Post 라는 HTTP 통신을 위하여 DTO 객체를 생성 후 builder 를 통하여 id,name,price,stock 을 builder
-        ProductDTO productDTO = ProductDTO.builder().productId("15871").productName("pen")
+        ProductDTO productDTO = ProductDTO.builder().productId(15871L).productName("pen")
                 .productPrice(5000).productStock(2000).build();
 
         // Gson 은 JSON 을 조금더 편하게 다루기 위한 라이브러리
@@ -96,7 +95,7 @@ public class ProductControllerTest {
                 .andDo(print());
 
         // 마지막으로 verify 를 통하여 해당 메서드가 실행 되었는지 Check
-        verify(productService).saveProduct("15871", "pen", 5000, 2000);
+        verify(productService).saveProduct(15871L, "pen", 5000, 2000);
 
     }
 

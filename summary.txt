@@ -354,6 +354,11 @@ AOP 를 통해 기존 프로젝트에 다양한 기능을 로직 수정 없이 �
 예) 언제 데이터가 생성 되었는 지, 누가 데이터를 생성 하였는 지, 언제 데이터가 변경되었는 지 등
 
 -- JPA Auditing : 필연적으로 @EntityListner 어노테이션을 사용하게 됨,
+-- @EntityListner 의 파라미터로 콜백을 요청할 클래스를 지정항 사용
+-- @EntityListner 의 요청 시점 - @PostLoad, @PrePersist, @PostPersist, @PreUpdate, @PostUpdate, @PreUpdate, @PostRemove
+-- JPA Auditing Annotation : @CreatedDate, @CreatedBy, @LastModifiedDate, @LastMdofiedBy
+
+
 
 
 

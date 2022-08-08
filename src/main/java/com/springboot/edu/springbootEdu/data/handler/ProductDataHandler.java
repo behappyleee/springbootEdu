@@ -4,8 +4,8 @@ import com.springboot.edu.springbootEdu.data.Entity.ProductEntity;
 
 public interface ProductDataHandler {
 
-    ProductEntity saveProductEntity(String productId, String productName, int productPrice, int productStock);
+    ProductEntity saveProductEntity(Long productId, String productName, int productPrice, int productStock);
 
-    ProductEntity getProductEntity(String productId);
+    ProductEntity getProductEntity(Long productId);
 
 }

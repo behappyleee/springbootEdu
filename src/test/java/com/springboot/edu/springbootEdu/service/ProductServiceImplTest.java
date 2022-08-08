@@ -1,9 +1,9 @@
-package com.springboot.edu.springbootEdu.serviceImpl;
+package com.springboot.edu.springbootEdu.service;
 
 import com.springboot.edu.springbootEdu.data.Entity.ProductEntity;
 import com.springboot.edu.springbootEdu.data.dto.ProductDTO;
 import com.springboot.edu.springbootEdu.data.handler.impl.ProductDataHandlerImpl;
-import com.springboot.edu.springbootEdu.serviceImpl.impl.ProductServiceImpl;
+import com.springboot.edu.springbootEdu.service.impl.ProductServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,36 +35,36 @@ public class ProductServiceImplTest {
     public void getProductTest() {
 
         // given
-        Mockito.when(productDataHandler.getProductEntity("123"))
-                .thenReturn(new ProductEntity("123", "pen", 2000, 3000));
+        Mockito.when(productDataHandler.getProductEntity(123l))
+                .thenReturn(new ProductEntity(123l, "pen", 2000, 3000));
 
         // getProduct 할 시 DTO 로 변환 되기에 ProductDTO 타입으로 받음
-        ProductDTO productDTO = productService.getProduct("123");
+        ProductDTO productDTO = productService.getProduct(123L);
 
-        Assertions.assertEquals(productDTO.getProductId(), "123");
+        Assertions.assertEquals(productDTO.getProductId(), 123);
         Assertions.assertEquals(productDTO.getProductName(), "pen");
         Assertions.assertEquals(productDTO.getProductPrice(), 2000);
         Assertions.assertEquals(productDTO.getProductStock(), 3000);
 
-        verify(productDataHandler).getProductEntity("123");
+        verify(productDataHandler).getProductEntity(123L);
 
     }
 
     @Test
     public void saveProductTest() {
         // given
-        Mockito.when(productDataHandler.saveProductEntity("123", "pen", 2000, 3000 ))
-                .thenReturn(new ProductEntity("123", "pen", 2000, 3000));
+        Mockito.when(productDataHandler.saveProductEntity(123L, "pen", 2000, 3000 ))
+                .thenReturn(new ProductEntity(123L, "pen", 2000, 3000));
 
-        ProductDTO productDTO = productService.saveProduct("123", "pen", 2000, 3000);
+        ProductDTO productDTO = productService.saveProduct(123L, "pen", 2000, 3000);
 
-        Assertions.assertEquals(productDTO.getProductId(), "123");
+        Assertions.assertEquals(productDTO.getProductId(), 123);
         Assertions.assertEquals(productDTO.getProductName(), "pen");
         Assertions.assertEquals(productDTO.getProductPrice(), 2000);
         Assertions.assertEquals(productDTO.getProductStock(), 3000);
     
         // verify 를 이용하여 정상적으로 실행이 되었는지 체크
-        verify(productDataHandler).saveProductEntity("123","pen", 2000, 3000);
+        verify(productDataHandler).saveProductEntity(123L,"pen", 2000, 3000);
 
     }
 

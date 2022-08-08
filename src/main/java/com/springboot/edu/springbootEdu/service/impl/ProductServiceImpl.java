@@ -1,9 +1,9 @@
-package com.springboot.edu.springbootEdu.serviceImpl.impl;
+package com.springboot.edu.springbootEdu.service.impl;
 
 import com.springboot.edu.springbootEdu.data.Entity.ProductEntity;
 import com.springboot.edu.springbootEdu.data.dto.ProductDTO;
 import com.springboot.edu.springbootEdu.data.handler.ProductDataHandler;
-import com.springboot.edu.springbootEdu.serviceImpl.ProductService;
+import com.springboot.edu.springbootEdu.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
     }
     // Entity 란 테이블이란 직접적으로 Mapping 되는 객체
     @Override
-    public ProductDTO saveProduct(String productId, String productName, int productPrice, int productStock) {
+    public ProductDTO saveProduct(Long productId, String productName, int productPrice, int productStock) {
         ProductEntity productEntity = productDataHandler.saveProductEntity(productId, productName, productPrice, productStock);
         ProductDTO productDTO = new ProductDTO(productEntity.getProductId(),
                 productEntity.getProductName(), productEntity.getProductPrice(), productEntity.getProductStock());
@@ -33,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
     // 하지만 간단한 경우에는 컨트롤러에서 변환하는 경우도 있음 (각 팀마다 정하는게 좋음)
 
     @Override
-    public ProductDTO getProduct(String productId) {
+    public ProductDTO getProduct(Long productId) {
         ProductEntity productEntity = productDataHandler.getProductEntity(productId);
         ProductDTO productDTO = new ProductDTO(productEntity.getProductId(),
                 productEntity.getProductName(), productEntity.getProductPrice(), productEntity.getProductStock());

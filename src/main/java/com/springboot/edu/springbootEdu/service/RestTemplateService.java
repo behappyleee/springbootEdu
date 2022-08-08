@@ -1,4 +1,4 @@
-package com.springboot.edu.springbootEdu.serviceImpl;
+package com.springboot.edu.springbootEdu.service;
 
 import com.springboot.edu.springbootEdu.dto.MemberDTO;
 import org.springframework.http.ResponseEntity;

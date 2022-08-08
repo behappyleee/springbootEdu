@@ -1,11 +1,10 @@
 package com.springboot.edu.springbootEdu.data.Entity;
 
 import com.springboot.edu.springbootEdu.data.dto.ProductDTO;
+import com.springboot.edu.springbootEdu.naver.entity.BaseEntity;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 // 만약 아래 어노테이션을 하나로 @Data 로 어노테이션 사용하여도 됨
@@ -16,10 +15,11 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Builder
 @Table(name="product")
-public class ProductEntity {
+public class ProductEntity extends BaseEntity {
 
     @Id
-    String productId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long productId;
     String productName;
     Integer productPrice;
     Integer productStock;

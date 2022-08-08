@@ -3,7 +3,7 @@ package com.springboot.edu.springbootEdu.controller;
 import com.springboot.edu.springbootEdu.common.Constants;
 import com.springboot.edu.springbootEdu.common.exception.AroundHubException;
 import com.springboot.edu.springbootEdu.data.dto.ProductDTO;
-import com.springboot.edu.springbootEdu.serviceImpl.ProductService;
+import com.springboot.edu.springbootEdu.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class ProductController {
     }
 
     @GetMapping(value = "/product/{productId}")
-    public ProductDTO getProduct(@PathVariable String productId) {
+    public ProductDTO getProduct(@PathVariable Long productId) {
         long startTime = System.currentTimeMillis();
         // 쉼표 하나 넣을 시
         LOGGER.info("[PRODUCT CONTROLLER] perform {} of springbootEdu ", "getProduct");
@@ -45,7 +45,7 @@ public class ProductController {
     // ProductDTO 의 Validation 어노테이션을 사용하기 위하여서는 @Valid 어노테이션을 붙여준다.
     @PostMapping(value ="/product")
     public ProductDTO createProduct(@Valid @RequestBody ProductDTO productDTO) {
-        String productId = productDTO.getProductId();
+        Long productId = productDTO.getProductId();
         String productName = productDTO.getProductName();
         int productPrice = productDTO.getProductPrice();
         int productStock = productDTO.getProductStock();

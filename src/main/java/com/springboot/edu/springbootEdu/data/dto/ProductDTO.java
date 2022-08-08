@@ -17,7 +17,7 @@ public class ProductDTO {
         // 어노테이션을 이용 하여 Validation Library를 활용
         @NotNull
         // @Size(min =0, max=0)
-        private String productId;
+        private Long productId;
         @NotNull
         private String productName;
         @NotNull

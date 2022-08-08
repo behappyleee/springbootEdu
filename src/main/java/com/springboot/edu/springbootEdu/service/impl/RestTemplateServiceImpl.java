@@ -1,7 +1,7 @@
-package com.springboot.edu.springbootEdu.serviceImpl.impl;
+package com.springboot.edu.springbootEdu.service.impl;
 
 import com.springboot.edu.springbootEdu.dto.MemberDTO;
-import com.springboot.edu.springbootEdu.serviceImpl.RestTemplateService;
+import com.springboot.edu.springbootEdu.service.RestTemplateService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.RequestEntity;
