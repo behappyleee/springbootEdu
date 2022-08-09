@@ -358,7 +358,12 @@ AOP 를 통해 기존 프로젝트에 다양한 기능을 로직 수정 없이 �
 -- @EntityListner 의 요청 시점 - @PostLoad, @PrePersist, @PostPersist, @PreUpdate, @PostUpdate, @PreUpdate, @PostRemove
 -- JPA Auditing Annotation : @CreatedDate, @CreatedBy, @LastModifiedDate, @LastMdofiedBy
 
+-- Springboot 쿼리 메서드 : JPQL : Java Persistence Query Language 의 줄임말 / 테이블이 아닌 엔티티 객체를 대상으로 사용되는 객체지향 쿼리
+-- 쿼리 메서드는 Spring Data JPA 의 핵심 기능, JpaRepository 에서 제공하는 기본 메서드 만으로는 비즈니스 로직을 처리하는 데 한계가 있음
+-- 이름을 짓는 것에는 특별한 규칙이 존재 (네이밍 컨벤션) 규칙에 맞게 이름을 지으면 그에 맞는 쿼리가 자동 생성이 됨
 
+-- 쿼리 메서드 크게 Subject 와 Predicate 로 구분이 됨 find...By .. exist..By (리턴 타입 boolean) 와 같은 키워드로 주제를 정하며 by 는 서술어의 시작을 나타냄
+-- 쿼리 메서드의 조건자 키워드 Is 값의 일치를 위한 조건자 키워드 Euqals 키워드와 동일한 기능을 수행, Is 가 기본 Default 값이라 보통 생략을 많이 함
 
 
 

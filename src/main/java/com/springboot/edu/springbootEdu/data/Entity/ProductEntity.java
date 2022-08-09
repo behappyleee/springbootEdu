@@ -14,6 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString   // toString 값을 추가 Entity 값을 더 쉽게 조회가 가능
 @Table(name="product")
 public class ProductEntity extends BaseEntity {
 

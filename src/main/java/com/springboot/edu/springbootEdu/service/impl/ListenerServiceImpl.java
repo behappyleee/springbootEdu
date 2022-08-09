@@ -6,7 +6,9 @@ import com.springboot.edu.springbootEdu.service.ListenerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ListenerServiceImpl implements ListenerService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(ListenerServiceImpl.class);
