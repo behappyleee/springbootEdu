@@ -1,5 +1,7 @@
 package com.springboot.edu.springbootEdu.data.repository;
 import com.springboot.edu.springbootEdu.data.Entity.ProductEntity;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -14,17 +16,14 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     List<ProductEntity> findByProductName(String name);
     List<ProductEntity> queryByProductName(String name);
 
-//    TODO existByProductName 메서드 사용 시 에러가 발생함 이유 알아보기
-//    boolean existByProductName(String name);
+    boolean existsByProductName(String name);
 
     long countByProductName(String name);
 
     void deleteByProductId(Long id);
 
-//    TODO removeProductId 메서드 사용 시 에러가 발생함 이유 알아보기
-//    long removeProductId(Long id);
-
-    List<ProductEntity> findFirstByProductName(String name);
+    long removeByProductId(Long id);
+    List<ProductEntity> findFirst5ByProductName(String name);
 
     List<ProductEntity> findTop3ByProductName(String name);
 
@@ -36,8 +35,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     List<ProductEntity> findByProductIdNot(Long id);
 
-//    TODO removeProductId 메서드 사용 시 에러가 발생함 이유 알아보기
-//    List<ProductEntity> findByProductIdsNot(Long id);
+    List<ProductEntity> findByProductIdIsNot(Long id);
 
     List<ProductEntity> findByProductStockIsNull();
 
@@ -45,8 +43,24 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     // And Or
     List<ProductEntity> findTopByProductIdAndProductName(Long id, String name);
+
+    // (Is)GreaterThan / (Is)LessThan / (Is)Between
     List<ProductEntity> findByProductPriceGreaterThan(Integer price);
+    // (Is)Like / (Is)Containing / (Is)StartingWith / (Is)EndingWith
     List<ProductEntity> findByProductNameContaining(String name);
 
+    /* 정렬과 페이징 */
+    // ASC : 오름차순 DESC : 내림차순 (Containing 은 부분조회 부분적으로 일치하면 데이터를 조회)
+    List<ProductEntity> findByProductNameContainingOrderByProductStockAsc(String name);
+    List<ProductEntity> findByProductNameContainingOrderByProductStockDesc(String name);
+
+    // 여러 정렬 기준 사용
+    List<ProductEntity> findByProductNameContainingOrderByProductPriceAscProductStockDesc(String name);
+
+    // 매개 변수를 활용한 정렬
+    List<ProductEntity> findByProductNameContaining(String name, Sort sort);
+
+    // 페이징 처리하기
+    List<ProductEntity> findByProductPriceGreaterThan(Integer price, Pageable pageable);
 
 }
