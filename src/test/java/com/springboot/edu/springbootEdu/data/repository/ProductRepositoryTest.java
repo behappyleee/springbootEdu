@@ -3,6 +3,7 @@ package com.springboot.edu.springbootEdu.data.repository;
 import com.springboot.edu.springbootEdu.controller.ProductController;
 import com.springboot.edu.springbootEdu.data.Entity.ProductEntity;
 import jdk.swing.interop.SwingInterOpUtils;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.assertj.core.api.Assertions;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -220,21 +223,91 @@ public class ProductRepositoryTest {
 
         List<ProductEntity> foundProduct = productRepository.findByProductNameContainingOrderByProductStockAsc("상품");
 
+        // ProductStockPrice 로 정렬이 됨 (ASC)
         for (ProductEntity product : foundProduct) {
             System.out.println("Stock Asc : " + product.toString());
         }
 
+        // ProductStockPrice 로 정렬이 됨 (DESC)
         foundProduct = productRepository.findByProductNameContainingOrderByProductStockDesc("상품");
         for (ProductEntity product : foundProduct) {
             System.out.println("Containing Order By Stock : " + product.toString());
         }
+    }
 
-        foundProduct = productRepository.findByProductNameContainingOrderByProductPriceAscProductStockDesc("상품");
-        for (ProductEntity product : foundProduct) {
-            System.out.println("Order Pridce Asc Stock Desc : " + product.toString());
+    @Test
+    void multiOrderByTest() {
+        List<ProductEntity> foundAll = productRepository.findAll();
+        System.out.println("================ TEST DATA START =====================");
+        for(ProductEntity product : foundAll) {
+            System.out.println("productTo String : " + product.toString());
+        }
+        System.out.println("============== TEST DATA END ===================");
+
+        List<ProductEntity> foundProducts = productRepository.findByProductNameContainingOrderByProductPriceAscProductStockDesc(
+                "상품"
+        );
+
+        for(ProductEntity product : foundProducts) {
+            System.out.println("Product To String found : " + product.toString());
         }
 
     }
+
+    @Test
+    void orderByWithParameterTest() {
+        List<ProductEntity> foundAll = productRepository.findAll();
+        System.out.println("====================== TEST DATA ==========================");
+        for(ProductEntity product : foundAll) {
+            System.out.println("AllProduct To String " + product.toString());
+        }
+        System.out.println("====================== TEST DATA END =======================");
+
+        List<ProductEntity> foundProducts = productRepository.findByProductNameContaining("상품", Sort.by(Sort.Order.asc("productPrice")));
+
+        for(ProductEntity product : foundProducts) {
+            System.out.println("Get FoundProducts : " + product.toString());
+        }
+            
+        // 다중 정렬 (Orderby 문을 다 중 으로 입력)
+        foundProducts = productRepository.findByProductNameContaining("상품", Sort.by(Sort.Order.asc("productPrice"), Sort.Order.asc("productStock")));
+
+        for(ProductEntity product : foundProducts) {
+            System.out.println("다중 정렬 produce : " + product.toString());
+        }
+
+    }
+
+    @Test
+    void pagingTest() {
+        List<ProductEntity> foundAll = productRepository.findAll();
+        System.out.println("================== TEST DATA START ====================");
+        for(ProductEntity product : foundAll) {
+            System.out.println("TEST DATA SAMPLE : " + product.toString());
+        }
+        System.out.println("=================== TEST DATA END ===========================");
+
+        // Paging 처리 PageRequestOf 로 들어 감, Paging 처리를 간단하게 (JPA 로 구현이 가능)
+        // 200 보다 큰 0 페이지 에서 2개씩 묶음으로 가져옴
+        List<ProductEntity> foundProducts = productRepository.findByProductPriceGreaterThan(200, PageRequest.of(0, 2));
+
+        for(ProductEntity productPage : foundProducts) {
+            System.out.println("Pageable Product first : " + productPage.toString());
+        }
+
+        foundProducts = productRepository.findByProductPriceGreaterThan(200, PageRequest.of(4, 2));
+
+        for(ProductEntity productPage : foundProducts) {
+            System.out.println("Pageable Product second : " + productPage.toString());
+        }
+
+
+
+
+    }
+
+
+
 
 
 
