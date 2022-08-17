@@ -3,6 +3,8 @@ import com.springboot.edu.springbootEdu.data.Entity.ProductEntity;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -62,5 +64,26 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     // 페이징 처리하기
     List<ProductEntity> findByProductPriceGreaterThan(Integer price, Pageable pageable);
+
+    /* Native Query 사용하기 */
+    // nativeQuery = true 옵션을 넣어주어야 함
+    @Query(value = "SELECT * from product p WHERE p.product_price > 2000", nativeQuery = true)
+    List<ProductEntity> findByPriceBasis();
+
+    @Query(value = "SELECT * FROM product p WHERE p.product_price > 2000", nativeQuery = true)
+    List<ProductEntity> findByPriceBasisNativeQuery();
+
+    @Query(value = "SELECT * FROM product p WHERE p.product_price > ?1", nativeQuery = true)
+    List<ProductEntity> findByPriceWithParameter(Integer price);
+
+    @Query(value = "SELECT * FROM product p WHERE p.product_price > :price", nativeQuery = true)
+    List<ProductEntity> findByPriceWithParameterNaming(Integer price);
+
+    @Query(value ="SELECT * FROM product p WHERE p.product_price > pri", nativeQuery = true)
+    List<ProductEntity> findByPriceWithParameterNaming2(@Param("pri") Integer price);
+
+    @Query(value = "SELECT * FROM product p WHERE product_price > :price", countQuery="SELECT count(*) FROM product p WHERE product_price > ?1",
+        nativeQuery = true)
+    List<ProductEntity> findByPriceWithParameterPaging(Integer price, Pageable pageable);
 
 }
