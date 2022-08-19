@@ -14,7 +14,7 @@ public class JasyptConfig {
     @Bean(name = "jasyptStringEncryptor")
     public StringEncryptor stringEncryptor() {
         String password = "around_hub_studio";
-
+        // Jasypt Encrypt 셋팅
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
 
@@ -23,7 +23,7 @@ public class JasyptConfig {
         config.setKeyObtentionIterations("1000");   // 반복 할 해싱 회수
         config.setPoolSize("1");    // 인스턴스 pool
         config.setProviderName("SunJCE");
-        config.setSaltGeneratorClassName("org.jasypt.salt.RandomSaltGenerator");   // salt 생성 클래스
+        // config.setSaltGeneratorClassName("org.jasypt.salt.RandomSaltGenerator");   // salt 생성 클래스, 생략 Decrypt 문제가 있어 일단 생략 함
         config.setStringOutputType("base64");   // 인코딩 방싱
         encryptor.setConfig(config);
 
