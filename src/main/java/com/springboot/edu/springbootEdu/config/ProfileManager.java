@@ -15,5 +15,12 @@ public class ProfileManager {
         this.environment = environment;
     }
 
+    public void printActiveProfiles() {
+        logger.info("[ProfileActiveProfiles] active profiles size : {} " , environment.getActiveProfiles().length);
+        for(String profile : environment.getActiveProfiles()) {
+            logger.info("[printActiveProfiles] : {} " , profile);
+        }
+    }
+
 
 }
