@@ -388,6 +388,13 @@ AOP 를 통해 기존 프로젝트에 다양한 기능을 로직 수정 없이 �
 -- 각각 서버의 환경에 맞게 설정 하는 것을 Profile 이라고 함 (특정 환경에서만 실행하여야하는 Bean) @Profile 어노테이션을 활용
 -- properties 이름 은 application-dev.properties / application-local.properties / application-prod.properties 이런 식으로 이름을 지어주어야 함
 
+-- application 환경 별로 property 파일 구성 가능 / application-환경명.properties 이름 으로 환경별로 구성 가능
 
+-- Cache : 캐시란 자주 사용하는 데이터를 미리 보관해 둔 임시 장소 캐시는 비교적 저장 공간이 적고 전체적인 비용이 비쌈
+           대신 빠른 IO를 통해 성능적 이점을 가질 수 있음 (주로 변경될 일이 많이 없는 것들을 많이 사용)
 
+-- Springboot 에서 사용할 수 있는 캐시는 대부분 JSR - 107 을 따름, JSR - 107 은 Java Specification Request 의 줄임말로 자바 플랫폼에 대한 규격을 제한하거나 기술한 것
+-- 캐시는 로컬 캐시와 글로벌 캐시로 구분이 가능,
 
+-- Redis : Remote Dictionary Server 의 약자로 키 - 값 구조의 데이터를 저장하고 관리하기 위한 오픈 소스기반의 비관계형 데이터 관리 시스템
+-- Java 에서 사용하는 Redis Client 는 크게 2가지가 있음 (Jedis / Lettuce) 스프링 부트 2.0 이후로는 기본 클라이언트로 Lettuce 가 사용됨 Jedis 는 Deprecated

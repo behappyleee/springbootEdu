@@ -18,12 +18,9 @@ public class SpringbootEduApplication {
 	// 각 환경에 맞게 Config (env / local)
 	@Autowired
 	public SpringbootEduApplication(EnvConfiguration envConfiguration, ProfileManager profileManager) {
-		logger.info(envConfiguration.getMessage());
-
+		logger.info("Springboot Edu Application Run : {} ", envConfiguration.getMessage());
+		profileManager.printActiveProfiles();
 	}
-
-
-
 
 
 	public static void main(String[] args) {
