@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Profile;
 
 @Profile("dev")
 @Configuration
-public class DevConfiguration implements EnvConfiguration{
+public class DevConfiguration implements EnvConfiguration {
 
     private static Logger logger = LoggerFactory.getLogger(DevConfiguration.class);
 
@@ -24,5 +24,4 @@ public class DevConfiguration implements EnvConfiguration{
         logger.info("[getMessage] devConfigurariotn 입니다.]");
         return message;
     }
-
 }

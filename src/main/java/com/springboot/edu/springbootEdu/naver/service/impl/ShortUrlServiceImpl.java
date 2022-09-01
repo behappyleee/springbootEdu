@@ -4,6 +4,7 @@ import com.springboot.edu.springbootEdu.naver.dao.ShortUrlDAO;
 import com.springboot.edu.springbootEdu.naver.dto.NaverUriDTO;
 import com.springboot.edu.springbootEdu.naver.dto.ShortUrlResponseDTO;
 import com.springboot.edu.springbootEdu.naver.entity.ShortUrlEntity;
+import com.springboot.edu.springbootEdu.naver.repository.ShortUrlRedisRepository;
 import com.springboot.edu.springbootEdu.naver.service.ShortUrlService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,15 +16,19 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.Arrays;
+import java.util.Optional;
 
 @Service
 public class ShortUrlServiceImpl implements ShortUrlService {
     private Logger LOGGER = LoggerFactory.getLogger(ShortUrlServiceImpl.class);
 
-    ShortUrlDAO shortUrlDAO;
+    private final ShortUrlDAO shortUrlDAO;
+    private final ShortUrlRedisRepository shortUrlRedisRepository;  // Redis 를 사용하기 위함
+
     @Autowired
-    public ShortUrlServiceImpl(ShortUrlDAO shortUrlDAO) {
+    public ShortUrlServiceImpl(ShortUrlDAO shortUrlDAO, ShortUrlRedisRepository shortUrlRepository) {
         this.shortUrlDAO = shortUrlDAO;
+        this.shortUrlRedisRepository = shortUrlRepository;
     }
 
     @Override
@@ -31,6 +36,9 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         LOGGER.info("[getShortUrl] data : {} ", originalUrl);
 
         ShortUrlEntity getShortUrlEntity = shortUrlDAO.getShortUrl(originalUrl);
+
+        // Cache Logic (Cache 에서 값 가져오기) - 값 가져올 시에는 Optional 이용하여 값을 가져옴 (Optional 을 통하여 DTO 값을 가져올 수 있음)
+        Optional<ShortUrlResponseDTO> foundResponseDto = shortUrlRedisRepository.findById(originalUrl);
 
         String orgUrl;
         String shortUrl;
@@ -73,8 +81,10 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         shortUrlDAO.saveShortUrl(shortUrlEntity);
         ShortUrlResponseDTO shortUrlResponseDTO = new ShortUrlResponseDTO(orgUrl, shortUrl);
 
-        LOGGER.info("[generateShourtUrl] Response DTO : {} " , shortUrlResponseDTO.toString());
+        // Cache 에 저장하는 로직
+        shortUrlRedisRepository.save(shortUrlResponseDTO);
 
+        LOGGER.info("[generateShourtUrl] Response DTO : {} " , shortUrlResponseDTO.toString());
         return shortUrlResponseDTO;
     }
 
@@ -124,7 +134,7 @@ public class ShortUrlServiceImpl implements ShortUrlService {
     }
 
     public void deleteByShortUrl(String url) {
-        LOGGER.info("[deleteByShortUrl] Url :  {} " , url);
+        LOGGER.info("[deleteByShortUrl] Usl :  {} " , url);
         shortUrlDAO.deleteByShortUrl(url);
     }
 

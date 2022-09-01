@@ -42,7 +42,6 @@ public class ListenerServiceImpl implements ListenerService {
     @Override
     public void removeEntity(ListenerEntity listenerEntity) {
         listenerRepository.delete(listenerEntity);
-
     }
 
 
